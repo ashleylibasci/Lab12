@@ -20,6 +20,9 @@ void setup()
   display.setup();
   display.clearDisplay();
   display.display();
+
+  client.subscribe("inTopic/message");
+  client.publish("outTopic/name", "test message");
 }
 
 void loop()
@@ -39,5 +42,22 @@ void loop()
 
 void callback(char *topic, byte *payload, unsigned int length)
 {
-  // write my code here
+  char p[length + 1];
+  memcpy(p, payload, length);
+  p[length] = NULL;
+  Serial.printf("%s", p);
+  Serial.println();
+
+  if (String(p).equals("high"))
+  {
+    digitalWrite(D7, HIGH);
+  }
+  else if (String(p).equals("low"))
+  {
+    digitalWrite(D7, LOW);
+  }
+  else
+  {
+    Serial.println(p);
+  }
 }
