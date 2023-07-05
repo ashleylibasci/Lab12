@@ -1,6 +1,4 @@
-// #include "env.h"
 #include "oled-wing-adafruit.h"
-// #include <blynk.h>
 #include "Particle.h"
 
 SYSTEM_THREAD(ENABLED);
@@ -16,21 +14,16 @@ MQTT client("lab.thewcl.com", 1883, callback);
 void setup()
 {
   Serial.begin(9600);
-  // Blynk.begin(BLYNK_AUTH_TOKEN);
 
   display.setup();
   display.clearDisplay();
   display.display();
 
   pinMode(D7, OUTPUT);
-
-  client.subscribe("Lab12");
-  client.publish("Lab12", "test message");
 }
 
 void loop()
 {
-  // Blynk.run();
   display.loop();
 
   if (client.isConnected())
@@ -40,6 +33,8 @@ void loop()
   else
   {
     client.connect(System.deviceID());
+    client.subscribe("Lab12");
+    client.publish("Lab12", "welcome!!");
   }
 }
 
@@ -53,6 +48,7 @@ void callback(char *topic, byte *payload, unsigned int length)
 
   if (String(p).equals("1"))
   {
+    Serial.println("1");
     digitalWrite(D7, HIGH);
   }
   else if (String(p).equals("0"))
