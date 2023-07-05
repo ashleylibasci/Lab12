@@ -44,6 +44,19 @@ void loop()
     client.subscribe("Lab12");
     client.publish("Lab12", "welcome!!");
   }
+
+  if (display.pressedA())
+  {
+    client.publish("Lab12", "button A pressed");
+  }
+  if (display.pressedB())
+  {
+    client.publish("Lab12", "button B pressed");
+  }
+  if (display.pressedC())
+  {
+    client.publish("Lab12", "button C pressed");
+  }
 }
 
 void callback(char *topic, byte *payload, unsigned int length)
