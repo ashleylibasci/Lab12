@@ -1,6 +1,8 @@
 #include "env.h"
 #include "oled-wing-adafruit.h"
 #include <blynk.h>
+#include "Particle.h"
+
 
 SYSTEM_THREAD(ENABLED);
 
@@ -15,14 +17,14 @@ MQTT client("lab.thewcl.com", 1883, callback);
 void setup()
 {
   Serial.begin(9600);
-  Blynk.begin(AUTH);
+  Blynk.begin(BLYNK_AUTH_TOKEN);
 
   display.setup();
   display.clearDisplay();
   display.display();
 
-  client.subscribe("inTopic/message");
-  client.publish("outTopic/name", "test message");
+  client.subscribe("Lab12Topic/message");
+  client.publish("Lab12Topic/name", "test message");
 }
 
 void loop()
