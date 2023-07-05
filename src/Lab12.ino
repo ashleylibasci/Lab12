@@ -1,18 +1,17 @@
-/*
- * Project Lab12
- * Description:
- * Author:
- * Date:
- */
+#include "env.h"
+#include "oled-wing-adafruit.h"
+#include <blynk.h>
 
-// setup() runs once, when the device is first turned on.
-void setup() {
-  // Put initialization like pinMode and begin functions here.
+SYSTEM_THREAD(ENABLED);
 
+OledWingAdafruit display;
+
+void setup()
+{
+  Serial.begin(9600);
+  Blynk.begin(auth);
 }
 
-// loop() runs over and over again, as quickly as it can execute.
-void loop() {
-  // The core of your code will likely live here.
-
+void loop()
+{
 }
