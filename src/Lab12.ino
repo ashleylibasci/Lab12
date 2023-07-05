@@ -40,14 +40,32 @@ void loop()
   if (display.pressedA())
   {
     client.publish("Lab12", "button A pressed");
+    display.clearDisplay();
+    display.setTextSize(1);
+    display.setTextColor(WHITE);
+    display.setCursor(0, 0);
+    display.println("button A pressed");
+    display.display();
   }
   if (display.pressedB())
   {
     client.publish("Lab12", "button B pressed");
+    display.clearDisplay();
+    display.setTextSize(1);
+    display.setTextColor(WHITE);
+    display.setCursor(0, 0);
+    display.println("button B pressed");
+    display.display();
   }
   if (display.pressedC())
   {
     client.publish("Lab12", "button C pressed");
+    display.clearDisplay();
+    display.setTextSize(1);
+    display.setTextColor(WHITE);
+    display.setCursor(0, 0);
+    display.println("button C pressed");
+    display.display();
   }
 }
 
